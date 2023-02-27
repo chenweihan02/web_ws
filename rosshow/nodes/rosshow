@@ -1,0 +1,4 @@
+#!/usr/bin/env python3
+
+from rosshow.rosshow import main
+main()
