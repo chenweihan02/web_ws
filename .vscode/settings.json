@@ -51,7 +51,7 @@
         "/home/cwh/autoware.ai/install/autoware_lanelet2_msgs/lib/python2.7/dist-packages",
         "/home/cwh/autoware.ai/install/autoware_config_msgs/lib/python2.7/dist-packages",
         "/home/cwh/autoware.ai/install/autoware_can_msgs/lib/python2.7/dist-packages",
-        "/opt/ros/melodic/lib/python2.7/dist-packages"
+        "/opt/ros/melodic/lib/python2.7/dist-packages",
     ],
     "ros.distro": "melodic"
 }

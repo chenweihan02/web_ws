@@ -21,6 +21,7 @@ add_message_files(
 # Generate services for testing (NOINSTALL)
 add_service_files(
   FILES
+  LaunchFile.srv
   AddTwoInts.srv
   SendBytes.srv
   TestArrayRequest.srv

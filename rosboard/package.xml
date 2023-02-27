@@ -12,6 +12,9 @@
   <depend>python3-tornado</depend>
   <depend>python3-simplejpeg-pip</depend>
 
+  <!-- <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend> -->
+
   <export>
     <build_type condition="$ROS_VERSION == 1">catkin</build_type>
     <build_type condition="$ROS_VERSION == 2">ament_python</build_type>

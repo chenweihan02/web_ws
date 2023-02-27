@@ -1,0 +1,6 @@
+# Client request launch file
+string filename
+---
+# Server response Content
+bool success    # Indicate if the call succeed or failed
+string message  # Message that elaborate on success or failure

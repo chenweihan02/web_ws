@@ -1,0 +1,13 @@
+header .mdl-layout__header-row .mdl-navigation__link {
+    line-height: 50px;
+}
+header .mdl-navigation__link {
+    background-color: rgb(63,81,181);
+    font-size: 18px !important;
+    color: #fff !important;
+}
+
+header .mdl-navigation__link:hover {
+   color: rgb(63,81,181) !important;
+   background-color: #fff !important; 
+}
