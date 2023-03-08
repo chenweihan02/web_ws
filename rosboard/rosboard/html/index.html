@@ -7,7 +7,7 @@
  -->
 <!doctype html>
 
-<html>
+<html lang="zh">
 
 <head>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -63,108 +63,162 @@
         <!-- <button style="height: 40px; margin-left: 100px;" onclick="cmd_vel()">send cmd_vel</button> -->
 
         <nav class="mdl-navigation mdl-layout--large-screen-only cwhtest">
-          <button type="button" class="btn mdl-navigation__link" data-toggle="modal" data-target="#exampleModal">
+          <button type="button" class="btn mdl-navigation__link" data-toggle="modal" data-target="#exampleModalone">
             建图
           </button>
-          <button type="button" class="btn mdl-navigation__link">Link</button>
-          <button type="button" class="btn mdl-navigation__link">Link</button>
+          <button type="button" class="btn mdl-navigation__link" data-toggle="modal"
+            data-target="#exampleModaltwo">录包</button>
+          <button type="button" class="btn mdl-navigation__link">导航</button>
           <button type="button" class="btn mdl-navigation__link">Link</button>
         </nav>
       </div>
     </header>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- NDT_Mapping -->
+    <div class="modal fade" id="exampleModalone" tabindex="-1" aria-labelledby="exampleModaloneLabel"
+      aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">NDT Mapping</h5>
+            <h5 class="modal-title" id="exampleModaloneLabel">NDT Mapping</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <form>
-              topic: /config/ndt_mapping
-              <!-- Resolution -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="ndt_mapping_resolution_span">Resolution</span>
-                </div>
-                <input type="number" class="form-control" id="ndt_mapping_resolution"
-                  aria-describedby="ndt_mapping_resolution_span" value="1">
-              </div>
-              <!-- Step Size -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="ndt_mapping_step_size_span">Step Size</span>
-                </div>
-                <input type="number" class="form-control" id="ndt_mapping_step_size"
-                  aria-describedby="ndt_mapping_step_size_span" value="0.1">
-              </div>
-              <!-- Transformation Epsilon -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="ndt_mapping_transformation_epsilon_span">Transformation
-                    Epsilon</span>
-                </div>
-                <input type="number" class="form-control" id="ndt_mapping_transformation_epsilon"
-                  aria-describedby="ndt_mapping_transformation_epsilon_span" value="0.01">
-              </div>
-              <!-- Maximum iterations -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="ndt_mapping_maximum_iterations_span">Maximum iterations</span>
-                </div>
-                <input type="number" class="form-control" id="ndt_mapping_maximum_iterations"
-                  aria-describedby="ndt_mapping_maximum_iterations_span" value="30">
-              </div>
-              <!-- Leaf Size -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="ndt_mapping_leaf_size_span">Leaf Size</span>
-                </div>
-                <input type="number" class="form-control" id="ndt_mapping_leaf_size"
-                  aria-describedby="ndt_mapping_leaf_size_span" value="1.01">
-              </div>
-              <!-- Minimum Scan Range -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="ndt_mapping_minimum_scan_range_span">Minimum Scan Range</span>
-                </div>
-                <input type="number" class="form-control" id="ndt_mapping_minimum_scan_range"
-                  aria-describedby="ndt_mapping_minimum_scan_range_span" value="5">
-              </div>
-              <!-- Maximum Scan Range -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="ndt_mapping_maximum_scan_range_span">Maximum Scan Range</span>
-                </div>
-                <input type="number" class="form-control" id="ndt_mapping_maximum_scan_range"
-                  aria-describedby="ndt_mapping_maximum_scan_range_span" value="200">
-              </div>
-              <!-- Maximum Add Scan Shift -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="ndt_mapping_maximum_add_scan_shift_span">Maximum Add Scan
-                    Shift</span>
-                </div>
-                <input type="number" class="form-control" id="ndt_mapping_maximum_add_scan_shift"
-                  aria-describedby="ndt_mapping_maximum_add_scan_shift_span" value="1">
-              </div>
-              <!-- Method Type -->
+
+              <ul class="list-group">
+
+                <li class="list-group-item">topic: /config/ndt_mapping</li>
+
+                <li class="list-group-item">
+                  <!-- Resolution -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="ndt_mapping_resolution_span">Resolution</span>
+                    </div>
+                    <input type="number" class="form-control" id="ndt_mapping_resolution"
+                      aria-describedby="ndt_mapping_resolution_span" value="1">
+                  </div>
+                  <!-- Step Size -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="ndt_mapping_step_size_span">Step Size</span>
+                    </div>
+                    <input type="number" class="form-control" id="ndt_mapping_step_size"
+                      aria-describedby="ndt_mapping_step_size_span" value="0.1">
+                  </div>
+                  <!-- Transformation Epsilon -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="ndt_mapping_transformation_epsilon_span">Transformation
+                        Epsilon</span>
+                    </div>
+                    <input type="number" class="form-control" id="ndt_mapping_transformation_epsilon"
+                      aria-describedby="ndt_mapping_transformation_epsilon_span" value="0.01">
+                  </div>
+                  <!-- Maximum iterations -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="ndt_mapping_maximum_iterations_span">Maximum iterations</span>
+                    </div>
+                    <input type="number" class="form-control" id="ndt_mapping_maximum_iterations"
+                      aria-describedby="ndt_mapping_maximum_iterations_span" value="30">
+                  </div>
+                  <!-- Leaf Size -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="ndt_mapping_leaf_size_span">Leaf Size</span>
+                    </div>
+                    <input type="number" class="form-control" id="ndt_mapping_leaf_size"
+                      aria-describedby="ndt_mapping_leaf_size_span" value="1.01">
+                  </div>
+                  <!-- Minimum Scan Range -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="ndt_mapping_minimum_scan_range_span">Minimum Scan Range</span>
+                    </div>
+                    <input type="number" class="form-control" id="ndt_mapping_minimum_scan_range"
+                      aria-describedby="ndt_mapping_minimum_scan_range_span" value="5">
+                  </div>
+                  <!-- Maximum Scan Range -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="ndt_mapping_maximum_scan_range_span">Maximum Scan Range</span>
+                    </div>
+                    <input type="number" class="form-control" id="ndt_mapping_maximum_scan_range"
+                      aria-describedby="ndt_mapping_maximum_scan_range_span" value="200">
+                  </div>
+                  <!-- Maximum Add Scan Shift -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="ndt_mapping_maximum_add_scan_shift_span">Maximum Add Scan
+                        Shift</span>
+                    </div>
+                    <input type="number" class="form-control" id="ndt_mapping_maximum_add_scan_shift"
+                      aria-describedby="ndt_mapping_maximum_add_scan_shift_span" value="1">
+                  </div>
+                </li>
+                <!-- Method Type -->
+                <li class="list-group-item">
+
+                  <!-- PCD OUTPUT -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="ndt_mapping_output_span">PCD filename</span>
+                    </div>
+                    <input type="text" class="form-control" id="ndt_mapping_output"
+                      aria-describedby="ndt_mapping_output_span" value="xxx.pcd">
+                    <button type="button" class="btn btn-success" onclick="pcdOutput()">PCD OUTPUT</button>
+                  </div>
+                </li>
+              </ul>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="">Save changes</button>
+            <button type="button" class="btn btn-primary" onclick="startNdtMapping()">Save changes</button>
           </div>
         </div>
       </div>
     </div>
 
-
-
+    <!-- ROSBAG -->
+    <div class="modal fade" id="exampleModaltwo" tabindex="-1" aria-labelledby="exampleModaltwoLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModaltwoLabel">NDT Mapping</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <ul class="list-group">
+                <li class="list-group-item">录包</li>
+                  <!-- ROSBAG OUTPUT -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="rosbag_output_span">rosbag filename</span>
+                    </div>
+                    <input type="text" class="form-control" id="rosbag_output"
+                      aria-describedby="rosbag_output_span" value="xxx.bag">
+                    <button type="button" class="btn btn-success" onclick="rosbagOutput()">ROSBAG OUTPUT</button>
+                  </div>
+                </li>
+              </ul>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary" onclick="startNdtMapping()">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <div class="mdl-layout__drawer">
@@ -183,14 +237,7 @@
       </div>
     </main>
   </div>
-
-  <!-- <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
-    <div class="mdl-snackbar__text"></div>
-    <button class="mdl-snackbar__action" type="button"></button>
-  </div> -->
-
 </body>
-
 <script src="js/roslibjs/build/roslib.js"></script>
 <!-- <script src="test_cmd_vel.js"></script>
   <script src="test_turtlesim.js"></script> -->
@@ -205,27 +252,42 @@
     console.log('localhost Connected to websocket server.');
   });
 
-  // start_ndt_mapping();
-  // test_turtlesim();
   //=================================================================
 
-  console.log('test_ndt_mapping')
-  // function start_ndt_mapping() {}
-  //获取所有数据
+  function pcdOutput() {
+    //发送topic
+    // 只需要filename.pcd即可，保存在/home/cwh/real_data/中
+    let pcdfilepath = $("#ndt_mapping_output").val();
+    console.log('pcdOutput index.html:', pcdfilepath)
+    //发送话题，保存这个值
 
-  var service = new ROSLIB.Service({
-    ros: ros,
-    name: '/run_roslaunch', // roslaunch服务的名称
-    serviceType: 'rosbridge_library/LaunchFile'
-  })
+    // Publishing a Topic
+    var pcdOutputPub = new ROSLIB.Topic({
+      ros: ros,
+      name: 'cwh_output',
+      messageType: 'std_msgs/String'
+    });
 
-  var request = new ROSLIB.ServiceRequest({
-    filename: 'setup_tf'
-  });
-  service.callService(request, function (result) {
-    console.log('Result for service call on ' + service.name + ': ' + result.success);
-  });
+    var filepathMsg = new ROSLIB.Message({
+      data: pcdfilepath
+    });
 
+    pcdOutputPub.publish(filepathMsg);
+  }
+
+  function rosbagOutput() {
+    let rosbagfilepath = $("#rosbag_output").val();
+    var rosbagOutputPub = new ROSLIB.Topic({
+      ros: ros,
+      name: 'cwh_output',
+      messageType: 'std_msgs/String'
+    });
+
+    var filepathMsg = new ROSLIB.Message({
+      data: pcdfilepath
+    });
+    rosbagOutputPub.publish(filepathMsg);
+  }
 
 
 </script>
