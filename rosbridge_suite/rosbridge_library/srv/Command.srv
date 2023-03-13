@@ -1,5 +1,6 @@
 # Client request launch file
-string filename
+string tag
+string[] cmd
 ---
 # Server response Content
 bool success    # Indicate if the call succeed or failed

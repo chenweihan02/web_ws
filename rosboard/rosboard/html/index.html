@@ -1,12 +1,4 @@
-<!-- 
-  roslaunch rosbridge_server rosbridge_websocket.launch
-  /home/cwh/web_ws/src/rosboard/rosboard/html
-  
-  del:
-  rosrun tf2_web_republisher tf2_web_republisher //tf
- -->
 <!doctype html>
-
 <html lang="zh">
 
 <head>
@@ -21,7 +13,7 @@
   <link href="css/index.css" media="all" rel="stylesheet" type="text/css">
 
   <!--cwh css  -->
-  <link href="mycss.css" media="all" rel="stylesheet" type="text/css">
+  <link href="css/mycss.css" media="all" rel="stylesheet" type="text/css">
   <!-- Bootstrap 的 CSS 文件 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -199,15 +191,20 @@
             <form>
               <ul class="list-group">
                 <li class="list-group-item">录包</li>
-                  <!-- ROSBAG OUTPUT -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="rosbag_output_span">rosbag filename</span>
-                    </div>
-                    <input type="text" class="form-control" id="rosbag_output"
-                      aria-describedby="rosbag_output_span" value="xxx.bag">
-                    <button type="button" class="btn btn-success" onclick="rosbagOutput()">ROSBAG OUTPUT</button>
+                <!-- ROSBAG OUTPUT -->
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="rosbag_output_span">rosbag filename</span>
                   </div>
+                  <input type="text" class="form-control" id="rosbag_output" aria-describedby="rosbag_output_span"
+                    value="xxx.bag">
+                </div>
+                <div>
+                  <!-- <button type="button" class="btn btn-success" onclick="rosbagOutput()">start</button>
+                  <button type="button" class="btn btn-warning" onclick="rosbagOutput()">stop</button> -->
+                  <button type="button" class="btn btn-success" onclick="rosbagStart()">start</button>
+                  <button type="button" class="btn btn-warning" onclick="rosbagStop()">stop</button>
+                </div>
                 </li>
               </ul>
             </form>
@@ -219,7 +216,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="mdl-layout__drawer">
       <nav id="topics-nav" class="mdl-navigation">
@@ -242,6 +238,7 @@
 <!-- <script src="test_cmd_vel.js"></script>
   <script src="test_turtlesim.js"></script> -->
 <script src="test_ndt_mapping.js"></script>
+<script src="test_pcd_output.js"></script>
 <script>
   var ros = new ROSLIB.Ros({
     url: 'ws://localhost:9090'
@@ -254,39 +251,40 @@
 
   //=================================================================
 
-  function pcdOutput() {
-    //发送topic
-    // 只需要filename.pcd即可，保存在/home/cwh/real_data/中
-    let pcdfilepath = $("#ndt_mapping_output").val();
-    console.log('pcdOutput index.html:', pcdfilepath)
-    //发送话题，保存这个值
-
-    // Publishing a Topic
-    var pcdOutputPub = new ROSLIB.Topic({
+  function rosbagStart() {
+    let rosbagfilepath = $("#rosbag_output").val();
+    console.log('rosbagStart')
+    var service = new ROSLIB.Service({
       ros: ros,
-      name: 'cwh_output',
-      messageType: 'std_msgs/String'
+      name: '/run_localcommand', // roslaunch服务的名称
+      serviceType: 'rosbridge_library/Command'
+    })
+    var request = new ROSLIB.ServiceRequest({
+      tag: 'rosbag_start',
+      cmd: [rosbagfilepath]
     });
-
-    var filepathMsg = new ROSLIB.Message({
-      data: pcdfilepath
+    service.callService(request, function (result) {
+      console.log('Result for service call on ' + service.name + ': ' + result.success + ': ' + result.message);
     });
-
-    pcdOutputPub.publish(filepathMsg);
   }
 
-  function rosbagOutput() {
-    let rosbagfilepath = $("#rosbag_output").val();
-    var rosbagOutputPub = new ROSLIB.Topic({
+
+  function rosbagStop() {
+    console.log('rosbagStop')
+
+    var service = new ROSLIB.Service({
       ros: ros,
-      name: 'cwh_output',
-      messageType: 'std_msgs/String'
+      name: '/run_localcommand', // roslaunch服务的名称
+      serviceType: 'rosbridge_library/Command'
+    })
+
+    var request = new ROSLIB.ServiceRequest({
+      tag: 'rosbag_stop'
+    });
+    service.callService(request, function (result) {
+      console.log('Result for service call on ' + service.name + ': ' + result.success + ': ' + result.message);
     });
 
-    var filepathMsg = new ROSLIB.Message({
-      data: pcdfilepath
-    });
-    rosbagOutputPub.publish(filepathMsg);
   }
 
 
